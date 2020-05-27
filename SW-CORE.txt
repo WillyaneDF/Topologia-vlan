@@ -1,0 +1,31 @@
+SW-CORE
+
+enable
+conf t
+hostname SW-CORE
+enable secret SenhadaEnable
+line console 0
+password SenhadaConsole
+login
+exit
+banner motd "ACESSO APENAS PARA PESSOAS AUTORIZADAS!"
+vlan 10
+name REDES
+vlan 20
+name DEV
+vlan 30
+name  MULTIMIDIA
+interface g0/1
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99
+interface g0/2
+switchport mode trunk 
+switchport trunk native vlan 99
+switchport trunk allowed vlan 10,20,30,99
+interface range f0/1-24
+shutdown
+exit
+wr
+
+
